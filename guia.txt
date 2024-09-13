@@ -1,0 +1,108 @@
+**Clientes**
+1. Crear cliente:
+   - **Método**: POST
+   - **URL**: http://localhost:3000/api/cliente
+   - **Body**: 
+     ```json
+     {
+       "documentoCliente": "123456",
+       "nombreCompleto": "Juan Pérez",
+       "celular": "3001234567",
+       "fechaNacimiento": "1990-01-01"
+     }
+     ```
+
+2. Obtener todos los clientes:
+   - **Método**: GET
+   - **URL**: http://localhost:3000/api/cliente
+
+3. Actualizar cliente:
+   - **Método**: PUT
+   - **URL**: http://localhost:3000/api/cliente/123456
+   - **Body**: 
+     ```json
+     {
+       "nombreCompleto": "Juan Pérez Actualizado",
+       "celular": "3007654321"
+     }
+     ```
+
+4. Eliminar cliente:
+   - **Método**: DELETE
+   - **URL**: http://localhost:3000/api/cliente/123456
+
+**Cuentas de Ahorro**
+1. Crear cuenta de ahorro:
+   - **Método**: POST
+   - **URL**: http://localhost:3000/api/cuenta
+   - **Body**: 
+     ```json
+     {
+       "documentoCliente": "123456",
+       "fechaApertura": "2024-09-01",
+       "saldo": 1000,
+       "claveAcceso": "1234"
+     }
+     ```
+
+2. Obtener cuenta de ahorro:
+   - **Método**: GET
+   - **URL**: http://localhost:3000/api/cuenta/1
+
+3. Consignar dinero en cuenta:
+   - **Método**: POST
+   - **URL**: http://localhost:3000/api/cuenta/1/consignar
+   - **Body**: 
+     ```json
+     {
+       "monto": 500,
+       "claveAcceso": "1234"
+     }
+     ```
+
+4. Retirar dinero de cuenta:
+   - **Método**: POST
+   - **URL**: http://localhost:3000/api/cuenta/1/retirar
+   - **Body**: 
+     ```json
+     {
+       "monto": 200,
+       "claveAcceso": "1234"
+     }
+     ```
+
+5. Eliminar cuenta de ahorro:
+   - **Método**: DELETE
+   - **URL**: http://localhost:3000/api/cuenta/1
+
+**Usuarios**
+1. Crear usuario:
+   - **Método**: POST
+   - **URL**: http://localhost:3000/api/usuario
+   - **Body**: 
+     ```json
+     {
+       "nombreUsuario": "jdoe",
+       "password": "securepassword",
+       "estado": "activo"
+     }
+     ```
+
+2. Obtener todos los usuarios:
+   - **Método**: GET
+   - **URL**: http://localhost:3000/api/usuario
+
+3. Actualizar usuario:
+   - **Método**: PUT
+   - **URL**: http://localhost:3000/api/usuario/jdoe
+   - **Body**: 
+     ```json
+     {
+       "password": "newpassword",
+       "estado": "inactivo"
+     }
+     ```
+
+4. Eliminar usuario:
+   - **Método**: DELETE
+   - **URL**: http://localhost:3000/api/usuario/jdoe
