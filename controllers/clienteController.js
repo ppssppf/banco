@@ -4,14 +4,14 @@ export async function createCliente(req, res) {
     const { documentoCliente, nombreCompleto, celular, fechaNacimiento } = req.body;
 
     try {
-        // Crear una nueva instancia de Cliente
         const cliente = new Cliente({ documentoCliente, nombreCompleto, celular, fechaNacimiento });
-        
-        // Guardar el cliente en la base de datos
         await cliente.save();
-        
         res.status(201).json({ message: 'Cliente creado con éxito', cliente });
     } catch (error) {
+        if (error.name === 'ValidationError') {
+            // Enviar detalles del error de validación
+            return res.status(400).json({ message: 'Error de validación', errors: error.errors });
+        }
         res.status(500).json({ error: error.message });
     }
 }
