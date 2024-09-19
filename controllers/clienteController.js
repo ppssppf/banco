@@ -22,7 +22,7 @@ export async function getClientes(req, res) {
         // Obtener todos los clientes de la base de datos
         const clientes = await Cliente.find();
         
-        res.status(200).json(clientes);
+        res.status(200).json({clientes});
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

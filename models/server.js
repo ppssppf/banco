@@ -1,6 +1,7 @@
 import express from 'express';
 import "dotenv/config";
 import dbConnection from '../database/config.js';
+import cors from "cors"
 import {getClientes,updateCliente,createCliente,deleteCliente} from "../controllers/clienteController.js"
 
 import {getCuentaAhorro, createCuentaAhorro, consignarDinero, retirarDinero, deleteCuentaAhorro} from '../controllers/cuentaController.js'
@@ -29,6 +30,12 @@ export default class Server {
     }
 
     routes() {
+        this.app.use(cors({
+            origin: 'http://localhost:5173', // Permitir solo ese origen
+            methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Métodos permitidos
+            allowedHeaders: ['Content-Type', 'Authorization'] // Encabezados permitidos
+        }));
+
         this.app.use(express.json())
 
         // **Rutas para Clientes**
